@@ -18,5 +18,71 @@ function isPalindrome(s: string): boolean {
     return true
 }
 
+console.log(isPalindrome("A man, a plan, a canal: Panama"))
 
-isPalindrome("A man, a plan, a canal: Panama")
+function removeElement(nums: number[], val: number): number {
+
+    let left =0;
+    let right = nums.length - 1;
+
+    while (left <= right) {
+        while (nums[left] !== val && left <= right) {
+            left++;
+        }
+
+        if(left > right){
+            break;
+        }
+
+        while (nums[right] ===val && left <= right){
+            right--;
+        }
+
+        if(left > right){
+            break;
+        }
+
+        const temp = nums[left];
+        nums[left] = nums[right];
+        nums[right] = temp;
+
+        left++;
+        right--;
+    }
+
+    return left;
+}
+
+console.log(removeElement([3,2,2,3],3))
+
+function strStr(haystack: string, needle: string): number {
+    let start = 0;
+
+    while(start <= haystack.length - needle.length) {
+        let index = 0;
+
+        while(index < needle.length) {
+            if(haystack[start + index] !== needle[index]) {
+                break;
+            }
+
+            index++;
+        }
+
+        if(index >= needle.length) {
+            return start;
+        }
+
+        start++;
+    }
+
+    return -1;
+}
+
+console.log(strStr("sadbutsad","sad"))
+
+function removeDuplicates(nums: number[]): number {
+ return -1
+}
+
+console.log(removeDuplicates([1,1,2]))
