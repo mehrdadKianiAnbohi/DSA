@@ -95,3 +95,46 @@ function fib(n:number):number {
 }
 
 console.log(fib(4))
+
+
+function max(list:number[]):number{
+    let theBiggest:number = list[0];
+
+    for(let i=0;i<list.length;i++){
+        if(theBiggest<list[i]){
+            theBiggest = list[i];
+        }
+    }
+
+    return theBiggest;
+}
+
+console.log(max([23,16,42,15,4,8]))
+
+
+function reverse(x:number):number{
+    let digits = String(Math.abs(x)).split('');
+
+    let left = 0;
+    let right = digits.length - 1;
+
+    while(left < right){
+        [digits[left], digits[right]] = [digits[right], digits[left]];
+        left++;
+        right--;
+    }
+    let reversed = Number(digits.join(''));
+
+    if(!isInt(reversed)){
+        return 0;
+    }
+
+    return x < 0 ? -reversed : reversed;
+
+}
+
+function isInt(x:number):boolean{
+    return -2_147_483_648 <= x && x <= 2_147_483_648;
+}
+console.log(reverse(123))
+console.log(reverse(-123))
